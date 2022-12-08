@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #5143431d;
+  }
+  
+  .message {
+    font-family: var(--font-family);
+    font-size: 80px;
+    font-weight: bold;
+    color: #252627;
+    /* transform: rotate(6deg); */
+    border-radius: 50%;
+  }
+  
+  .button {
+    background-color: #DB5461;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #ff9933;
+  }

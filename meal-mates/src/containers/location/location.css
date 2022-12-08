@@ -9,8 +9,9 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-
+    color: #252627;
     margin-right: 5rem;
+    height: 750px
 }
 
 .mealmate__location-content h1 {
@@ -47,8 +48,8 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 28px;
-    background: var(--color-footer);
-    border: 2px solid var(--color-footer);
+    background: rgba(255, 255, 255, 0.847);
+    border: 2px solid rgba(255, 255, 255, 0.847);
     padding: 0 1rem;
     outline: none;
     color: rgb(0, 0, 0);
@@ -75,6 +76,16 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+.mealmate__location-content__input button:hover {
+    background-color: #ff9933;
+    border: 2px solid #ff9933;
+  }
+
+.bottom_spacer 
+{
+    height: 50px;
+    width: 100%;
+  }
 
 @media screen and (max-width: 1050px) {
     .mealmate__location {
