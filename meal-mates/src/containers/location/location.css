@@ -81,6 +81,13 @@
     border: 2px solid #ff9933;
   }
 
+.center-button {
+    position: center;
+    top: 85%;
+    margin: 0 auto;
+    /* width: 50px; */
+    /* transform: translate(-50%, -50%); */
+  }
 .bottom_spacer 
 {
     height: 50px;
