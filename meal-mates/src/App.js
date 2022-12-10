@@ -12,7 +12,7 @@ function App() {
 
   // Dummy function call to get the closest restaurant from you
   let ans = getRestInformation('610 Beacon Street Boston',[1,2,3,4])
-  console.log(ans)
+
   return (
     <div className="App">
       <header className="App-header">
