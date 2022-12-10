@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import { getRestInformation } from './Components/YelpAPI';
 
 function App() {
+  let ans = getRestInformation('610 Beacon Street Boston MA', [1,2,3,4])
   return (
     <div className="App">
       <header className="App-header">
