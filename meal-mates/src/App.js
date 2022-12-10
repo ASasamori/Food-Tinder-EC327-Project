@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
+import React from 'react'
+
+import { Location, Match, Pricetag, Header} from './containers';
+import { useRef } from 'react';
+
 import './App.css';
 import Person from './components/Person';
 import Lonely from './components/Lonely';
@@ -8,6 +13,18 @@ import user from './user.json';
 import { getRestInformation } from './Components/YelpAPI';
 
 const App = () =>  {
+
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+  const section5Ref = useRef(null);
+
+  const handleClick = (ref) => {
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   let ans = getRestInformation('610 Beacon Street Boston MA', [1,2,3,4]);
 
   //This will read data from the Api which should use the data file
@@ -65,27 +82,27 @@ const App = () =>  {
     }
 
   }
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className = "App">
+      <div ref={section1Ref}>
+          <Header
+            nextPage={ section2Ref }/>
+      </div>
+      <div ref={section2Ref}>
+          <Pricetag
+            nextPage={ section3Ref }/>
+      </div>
+      <div ref={section3Ref}>
+          <Location
+            nextPage={ section4Ref }/>
+      </div>
+      <div ref={section5Ref}>
+          <Match />
+      </div>
+
     </div>
-  );
+  )
 }
-
+}
 export default App;
-
 
