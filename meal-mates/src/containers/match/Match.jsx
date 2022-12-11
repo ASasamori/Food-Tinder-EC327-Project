@@ -1,5 +1,5 @@
 import React from 'react'
-import resturant from '/Users/jakelee/Documents/EC327/EC327_Project/Food-Tinder-EC327-Project/meal-mates/src/assets/example_resturant_photo.jpeg'; 
+import resturant from '../../assets/example_resturant_photo.jpeg'; 
 import './match.css'
 import { Collapse } from 'antd';
 const { Panel } = Collapse;

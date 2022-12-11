@@ -1,0 +1,65 @@
+.container {
+    width: 300px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dot {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.card-container {
+    width: 100%;
+    background: white;
+    box-shadow: 0px 0px 15px -5px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.image-container img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    height: 200px;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+}
+
+.card-content {
+    text-align: left;
+    margin: 1rem;
+    margin-top: 0.5rem;
+}
+
+h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+.btn button {
+    margin: 10px;
+}
+
+.image_btn {
+    width: 50px;
+	height: 50px;
+    border: 0;
+	border-radius: 50px;
+	background-color: white;
+}
+
+.image_btn img {
+    width: 100%;
+    height: auto;
+}
+
+.backdrop {
+    border-radius: 5px;
+}
+
