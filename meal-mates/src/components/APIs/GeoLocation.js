@@ -12,19 +12,9 @@ export class GeoLocation extends Component {
     componentDidMount() {
         let lat, long
         navigator.geolocation.getCurrentPosition(function(position) {
-            lat = position.coords.latitude
-            long = position.coords.longitude
+            console.log(position)
         });
-        console.log(lat)
-        console.log(long)
-        return [lat,long] // Are these not integers? Try running again
+        // Are these not integers? Try running again
     }
 
-}
-export function wait(ms){
-    let start = new Date().getTime();
-    let end = start;
-    while(end < start + ms) {
-        end = new Date().getTime();
-    }
 }
