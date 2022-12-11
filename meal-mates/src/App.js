@@ -58,21 +58,21 @@ const App = () => {
       let num = event.target.name;
       console.log(num);
       switch (num){
-    case "$":
-      console.log("inside one");
-      numFinal = 1;
-        break;
-    case "$$":
-      console.log("inside two");
-      numFinal = 2;
+    case "$$$$":
+      console.log("inside four");
+      numFinal = 4;
         break;
     case "$$$":
       console.log("inside three");
       numFinal = 3;
         break;
+    case "$$":
+      console.log("inside two");
+      numFinal = 2;
+        break;
     default:
       console.log("else");
-        numFinal = 4;
+        numFinal = 1;
         break;
       }
       console.log("Final is:");
@@ -90,8 +90,8 @@ const App = () => {
         price: inputPrice,
         open_at: ThirtyMinFromNow(), // Date now is unix time of now, 1800 is unix for + 30 minutes
         sort_by: 'distance',
-        radius: 8047,
-        limit: '20' // randomize the limit that gets returned, min: 0, max: 50
+        radius: 24140,
+        limit: '40' // randomize the limit that gets returned, min: 0, max: 50
       },
       headers: {
         accept: 'application/json',
@@ -170,14 +170,14 @@ const App = () => {
         }
         break;
       case 'ADD_TO_DISLIKED_USERS' :
-        if (!disliked.includes(id)) {
+        if (!disliked.includes(dummy[index])) {
           newdisliked.push(dummy[index]);
           setDisliked(newdisliked);
           setIndex(index+1)
         }
         break;
       case 'ADD_TO_SUPERLIKED_USERS':
-        if (!superliked.includes(id)) {
+        if (!superliked.includes(dummy[index])) {
           newsuperlike.push(dummy[index]);
           setSuperliked(newsuperlike);
           setIndex(index+1)
@@ -206,13 +206,16 @@ const App = () => {
           <h2 className="header">Where Are You Heading?</h2>
             <div className="choose-preference-content__input">
               <input type="location" value={input} onChange={handleChange} placeholder="Enter Address or City" />
-             <button type="button" onClick={() => handleClick(section3Ref)} nextPage={ section3Ref }>Match Me </button>
+             <button type="button" onClick={() => {
+               handleClick(section3Ref)
+               getRestInformation(loc, numFinal)
+             }} nextPage={ section3Ref }>Match Me </button>
             </div>
         </div>
       </div>
       </div>
       <div ref={section3Ref}>
-      <button onClick={() => setIndex(index+1)}></button>
+      {/* <button onClick={() => setIndex(index+1)}></button> */} 
         {dummy? <>{
           <Card 
             title = { dummy[index].name }
@@ -229,7 +232,11 @@ const App = () => {
             // dummy[`${index}`].name
         }
         </> : (
-            <button onClick={getRestInformation('610 Beacon Street',[1,2,3,4])}>getinformation</button>
+            
+            <button onClick={() => {
+              getRestInformation(loc, numFinal)
+              handleClick(section2Ref)
+            }}>Not enough information try again</button>
         )}
         
       </div>
