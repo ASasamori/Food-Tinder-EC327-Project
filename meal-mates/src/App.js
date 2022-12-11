@@ -85,6 +85,7 @@ const App = () => {
   }
 
   console.log('dummy that works???', dummy);
+  
 
   //NAOMI STUFF 
   //This will read data from the Api which should use the data file
@@ -93,43 +94,41 @@ const App = () => {
   //Holds the resturants in arrays based on what the user inputed?
   const [liked, setLiked] = useState([]);
   const [disliked, setDisliked] = useState([]);
-  const [superlike, setSuperlike] = useState([]);
+  const [superliked, setSuperliked] = useState([]);
   //This keep tracks of what user is active data. First line in data file should be user info
   //and not a resturant
   const activeUser = 0;
-
+  console.log("liked: ", liked);
+  console.log("disliked: ", disliked);
+  console.log("superliked: ", superliked);
 
   const changeActionChoice = (id, action) => {
     //Adds to the arrays
-    const newResturant = [...resturants];
     const newLiked = [...liked];
-    const newsuperlike = [...superlike];
+    const newsuperlike = [...superliked];
     const newdisliked = [...disliked];
 
     //Based on user input 
     switch (action){
-      case 'LIKED_RESTURANT':
-        if (!resturants[activeUser].liked.includes(id)) {
+      case 'ADD_TO_LIKED_USERS':
+        if (!liked.includes(dummy[index])) {
           newLiked.push(dummy[index]);
-          console.log("inside liked");
           setLiked(newLiked);
+          setIndex(index+1)
         }
         break;
-      case 'DISLIKED_RESTURANT' :
-        if (!resturants[activeUser].disliked.includes(id)) {
-          //newResturant[activeUser].disliked.push(id);
+      case 'ADD_TO_DISLIKED_USERS' :
+        if (!disliked.includes(id)) {
           newdisliked.push(dummy[index]);
-
           setDisliked(newdisliked);
+          setIndex(index+1)
         }
         break;
-      case 'SUPERLIKE_RESTURANT':
-        if (!resturants[activeUser].superlike.includes(id)) {
-          //newResturant[activeUser].superlike.push(id);
+      case 'ADD_TO_SUPERLIKED_USERS':
+        if (!superliked.includes(id)) {
           newsuperlike.push(dummy[index]);
-
-          setSuperlike(newsuperlike);
-          
+          setSuperliked(newsuperlike);
+          setIndex(index+1)
         }
         break;
       default:
@@ -162,6 +161,8 @@ const App = () => {
             title = { dummy[index].name }
             imageUrl = { dummy[index].image_url }
             body = { dummy[index].location.display_address }
+            categories = { dummy[index].categories }
+            distance = { dummy[index].distance }
             changeActionChoice = { changeActionChoice }
             additionFunc = { addition }
           />

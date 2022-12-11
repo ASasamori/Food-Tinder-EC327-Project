@@ -13,7 +13,7 @@ const right = {
     justifySelf: 'start',
 }
 
-function Card({title, imageUrl, body, changeActionChoice, additionFunc}) {
+function Card({title, imageUrl, body, categories, distance, changeActionChoice, additionFunc}) {
     // Set the drag hook and define component movement based on gesture data
     const [{ x, bg, scale, justifySelf }, api] = useSpring(() => ({
         x: 0,
@@ -70,9 +70,21 @@ function Card({title, imageUrl, body, changeActionChoice, additionFunc}) {
                         <div className="card-content">
                             <div className="card-title">
                                 <h3>{title}</h3>
+                                <p>{ (distance/1000).toPrecision(2) } km</p>
                             </div>
                             <div className="card-body">
-                                <p>{body}</p>
+                                {body.map(item => {
+                                    return (
+                                        <div>{item}</div>
+                                    )
+                                })}
+                            </div>
+                            <div>
+                                {categories.map(item => {
+                                    return (
+                                        <div>-{item.title} </div>
+                                    )
+                                })}           
                             </div>
                         </div>
                         <Actions
