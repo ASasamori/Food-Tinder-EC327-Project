@@ -1,6 +1,6 @@
 import React from 'react'
-
-import { Location, Match, Pricetag, Header} from './containers';
+import ButtonGroup from "./ButtonGroup.js";
+import { Match, Header} from './containers';
 import { useRef } from 'react';
 import {useEffect, useState} from "react";
 import axios from 'axios';
@@ -8,6 +8,9 @@ import axios from 'axios';
 import './App.css';
 
 import Card from './components/Card'
+
+let numFinal;
+let loc;
 
 function ThirtyMinFromNow(){
   const newDate = Date.now()
@@ -23,9 +26,58 @@ const App = () => {
   const section5Ref = useRef(null);
   const section6Ref = useRef(null);
 
+
   // andrew's api functions
   const [dummy, setDummy] = useState(null)
   const [index, setIndex] = useState(0)
+
+  //front-end to get inputs for api functions
+  const [input, setInput] = React.useState('');
+  const [savedInput, setSavedInput] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+
+    //text bar, checks to see if there is change
+    const handleChange = (event) => {
+      setInput(event.target.value);
+    }
+  
+    //saves the change
+    const handleClick = (ref) => {
+    setSavedInput(input);
+    loc = input;
+    console.log(input);
+    console.log(loc);
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+    }
+
+    //the buttons for price tag
+    const printButtonLabel = (event) => {
+      let num = event.target.name;
+      console.log(num);
+      switch (num){
+    case "$":
+      console.log("inside one");
+      numFinal = 1;
+        break;
+    case "$$":
+      console.log("inside two");
+      numFinal = 2;
+        break;
+    case "$$$":
+      console.log("inside three");
+      numFinal = 3;
+        break;
+    default:
+      console.log("else");
+        numFinal = 4;
+        break;
+      }
+      console.log("Final is:");
+      console.log(numFinal);
+    };
 
   function getRestInformation(inputLocation, inputPrice) {
     const options = {
@@ -77,7 +129,7 @@ const App = () => {
     return num + 1;
   }
 
-  const handleClick = (ref) => {
+  const handleClick1 = (ref) => {
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
@@ -142,19 +194,24 @@ const App = () => {
       <div ref={section1Ref}>
           <Header
             nextPage={ section2Ref }/>
+      </div >
+      <div className="choose-preference section__padding" id="home" ref={section2Ref}>
+      <div className="choose-preference-content">
+        <div className="choose-preference">
+          <h1>How Much Are You Spending Today?</h1>
+          <ButtonGroup
+            buttons={["$", "$$", "$$$","$$$$"]}
+            doSomethingAfterClick={printButtonLabel}/>
+        <br/>
+          <h2 className="header">Where Are You Heading?</h2>
+            <div className="choose-preference-content__input">
+              <input type="location" value={input} onChange={handleChange} placeholder="Enter Address or City" />
+             <button type="button" onClick={() => handleClick(section3Ref)} nextPage={ section3Ref }>Match Me </button>
+            </div>
+        </div>
       </div>
-      <div ref={section2Ref}>
-          <Pricetag
-            nextPage={ section3Ref }/>
       </div>
       <div ref={section3Ref}>
-          <Location
-            nextPage={ section4Ref }/>
-      </div>
-      <div ref={section5Ref}>
-          <Match />
-      </div>
-      <div ref={section6Ref}>
       <button onClick={() => setIndex(index+1)}></button>
         {dummy? <>{
           <Card 
@@ -175,6 +232,9 @@ const App = () => {
             <button onClick={getRestInformation('610 Beacon Street',[1,2,3,4])}>getinformation</button>
         )}
         
+      </div>
+      <div ref={section5Ref}>
+          <Match />
       </div>
     </div>
   )
