@@ -1,8 +1,4 @@
-import React from 'react'
-
-import { Location, Match, Pricetag, Header} from './containers';
-import { useRef } from 'react';
-
+import logo from './logo.svg';
 import './App.css';
 
 const App = () => {
@@ -18,27 +14,36 @@ const App = () => {
       block: 'start',
     });
   }
-  
-  return (
-    <div className = "App">
-      <div ref={section1Ref}>
-          <Header
-            nextPage={ section2Ref }/>
-      </div>
-      <div ref={section2Ref}>
-          <Pricetag
-            nextPage={ section3Ref }/>
-      </div>
-      <div ref={section3Ref}>
-          <Location
-            nextPage={ section4Ref }/>
-      </div>
-      <div ref={section5Ref}>
-          <Match />
-      </div>
 
+// for matching, iterate through the type of cousine, in the array, and if matching, hold the information of
+// other type of food
+
+function App() {
+  // let myLocation = new GeoLocation()
+  // let long = myLocation.componentDidMount()
+
+  // Dummy function call to get the closest restaurant from you
+  let ans = getRestInformation('610 Beacon Street Boston',[1,2,3,4])
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+
+>>>>>>> parent of 801583a8 (commit)
