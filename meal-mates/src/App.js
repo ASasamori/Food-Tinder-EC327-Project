@@ -68,14 +68,6 @@ const App = () => {
   var delay = 20; 
 
   // swiping functions
-  const changeActionChoice = (userId, action) => {
-    switch (action) {
-      default:
-        console.log('change log')
-        return 0;
-    }
-  }
-
   const addition = (num) => {
     if (lastClick >= (Date.now() - delay))
       return;
@@ -92,7 +84,59 @@ const App = () => {
     });
   }
 
-  console.log('dummy that works???', dummy)
+  console.log('dummy that works???', dummy);
+
+  //NAOMI STUFF 
+  //This will read data from the Api which should use the data file
+  const [resturants, setResturants] = useState(dummy);
+
+  //Holds the resturants in arrays based on what the user inputed?
+  const [liked, setLiked] = useState([]);
+  const [disliked, setDisliked] = useState([]);
+  const [superlike, setSuperlike] = useState([]);
+  //This keep tracks of what user is active data. First line in data file should be user info
+  //and not a resturant
+  const activeUser = 0;
+
+
+  const changeActionChoice = (id, action) => {
+    //Adds to the arrays
+    const newResturant = [...resturants];
+    const newLiked = [...liked];
+    const newsuperlike = [...superlike];
+    const newdisliked = [...disliked];
+
+    //Based on user input 
+    switch (action){
+      case 'LIKED_RESTURANT':
+        if (!resturants[activeUser].liked.includes(id)) {
+          newLiked.push(dummy[index]);
+          console.log("inside liked");
+          setLiked(newLiked);
+        }
+        break;
+      case 'DISLIKED_RESTURANT' :
+        if (!resturants[activeUser].disliked.includes(id)) {
+          //newResturant[activeUser].disliked.push(id);
+          newdisliked.push(dummy[index]);
+
+          setDisliked(newdisliked);
+        }
+        break;
+      case 'SUPERLIKE_RESTURANT':
+        if (!resturants[activeUser].superlike.includes(id)) {
+          //newResturant[activeUser].superlike.push(id);
+          newsuperlike.push(dummy[index]);
+
+          setSuperlike(newsuperlike);
+          
+        }
+        break;
+      default:
+        return resturants;
+    }
+
+  }
   
   return (
     <div className = "App">
