@@ -3,6 +3,19 @@
 Team Members:
 Jason Li, Celine Chen, Andrew Sasasmori, Jake Chen, Naomi Gonzalez
 
+Team Emails:
+
+Jason Li: jli3469@bu.edu
+
+Celine Chen: cchen@bu.edu
+
+Andrew Sasasmori: sasamori@bu.edu
+
+Jake Chen: jaketlee@bu.edu
+
+Naomi Gonzalez: ngonzalz@bu.edu
+
+
 **How to build the project:**
 
 1) IMPORTANT! In order to run the code, input the following command in the User Terminal
