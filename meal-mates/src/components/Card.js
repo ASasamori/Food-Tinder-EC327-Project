@@ -13,7 +13,7 @@ const right = {
     justifySelf: 'start',
 }
 
-function Card({title, imageUrl, body, categories, distance, changeActionChoice, additionFunc}) {
+function Card({title, imageUrl, body, categories, distance, changeActionChoice, calcFunc, liked, disliked, superliked, setMatched, ref, handleScroll }) {
     // Set the drag hook and define component movement based on gesture data
     const [{ x, bg, scale, justifySelf }, api] = useSpring(() => ({
         x: 0,
@@ -24,12 +24,10 @@ function Card({title, imageUrl, body, categories, distance, changeActionChoice, 
     const bind = useDrag(({ active, movement: [mx], cancel }) => {
         if (mx > 350) {
             cancel()
-            additionFunc(3)
         }
 
         if (mx < -350) {
             cancel()
-            additionFunc(3)
         }
 
         api.start({
@@ -90,6 +88,13 @@ function Card({title, imageUrl, body, categories, distance, changeActionChoice, 
                         <Actions
                             person='fa'
                             changeActionChoice={ changeActionChoice } // figure out how to test this function
+                            calcMatch = { calcFunc }
+                            liked = { liked }
+                            disliked = { disliked }
+                            superliked = { superliked }
+                            setMatched = { setMatched }
+                            ref = { ref }
+                            handleScroll = { handleScroll }
                         />
                     </div>
                 </animated.div>

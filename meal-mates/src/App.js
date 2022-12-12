@@ -5,10 +5,13 @@ import { Match, Header} from './containers';
 import { useRef } from 'react';
 import {useEffect, useState} from "react";
 import axios from 'axios';
-
+import { Collapse } from 'antd';
 import './App.css';
-
 import Card from './components/Card'
+const { Panel } = Collapse;
+
+
+
 
 let numFinal;
 let loc;
@@ -20,13 +23,15 @@ function ThirtyMinFromNow(){
 }
 
 const App = () => {
+  window.onload = function() {
+    window.scrollTo(0, 0)
+  }
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
   const section4Ref = useRef(null);
   const section5Ref = useRef(null);
   const section6Ref = useRef(null);
-
 
   // andrew's api functions
   const [dummy, setDummy] = useState(null)
@@ -41,6 +46,10 @@ const App = () => {
     const handleChange = (event) => {
       setInput(event.target.value);
     }
+
+    const onChange = (key) => {
+      console.log(key);
+    };
   
     //saves the change
     const handleClick = (ref) => {
@@ -48,10 +57,6 @@ const App = () => {
     loc = input;
     console.log(input);
     console.log(loc);
-    ref.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
     }
 
     //the buttons for price tag
@@ -216,23 +221,34 @@ const App = () => {
              <button type="button" onClick={() => {
                handleClick(section3Ref)
                getRestInformation(loc, numFinal)
-             }} nextPage={ section3Ref }>Match Me </button>
+               setTimeout(function() {
+                window.scrollTo(0, 1800);
+                }, 750);
+             }}>Match Me </button>
             </div>
         </div>
       </div>
       </div>
       <div ref={section3Ref}>
       {/* <button onClick={() => setIndex(index+1)}></button> */} 
+      <h1> Press The Watermelon When You're Ready For A Match!</h1>
         {dummy? <>{
-          <Card 
-            title = { dummy[index].name }
-            imageUrl = { dummy[index].image_url }
-            body = { dummy[index].location.display_address }
-            categories = { dummy[index].categories }
-            distance = { dummy[index].distance }
-            changeActionChoice = { changeActionChoice }
-            additionFunc = { addition }
-          />
+            <Card 
+              title = { dummy[index].name }
+              imageUrl = { dummy[index].image_url }
+              body = { dummy[index].location.display_address }
+              categories = { dummy[index].categories }
+              distance = { dummy[index].distance }
+              changeActionChoice = { changeActionChoice }
+              calcFunc = { calculateMatch }
+              setMatched = { setMatched }
+              liked = { liked }
+              disliked = { disliked }
+              superliked = { superliked }
+              ref = { section4Ref }
+              handleScroll = { handleClick}
+            />
+          
           // dummy.map((shop, index) => (
           //     <div key={index}>name: { shop.id }</div>
           // ))
@@ -247,15 +263,31 @@ const App = () => {
         )}
         
       </div>
-      <div ref={section5Ref}>
-          <button onClick={() => setMatched(calculateMatch(liked,disliked,superliked))}>MATCH ME</button>
+      <div ref={section4Ref}>
+          {/* <button onClick={() => setMatched(calculateMatch(liked,disliked,superliked))}>MATCH ME</button> */}
           {matched? <>{
             <div>
-              {matched.name}
-              <br></br>
-              {matched.location.display_address}
-              <br></br>
-              {matched.distance}
+              <div className="message">It's a Match!
+                <br />
+                <h1>{matched.name}</h1>
+              </div>
+              <div className="match_image-container">
+                  <img src={matched.image_url} alt="" width = "550" height = "400"/>;
+              </div>
+                 <br />
+                 <br />
+               {/* https://ant.design/components/collapse#collapsepanel */}
+              <Collapse onChange={onChange}>
+                <Panel header="Restaurant Info" key="1">
+                  {matched.name}
+                  <br></br>
+                  {matched.location.display_address}
+                  <br></br>
+                  {matched.distance}
+                </Panel>
+              </Collapse>
+
+        <br /><br />
             </div>
           }
           </> : (

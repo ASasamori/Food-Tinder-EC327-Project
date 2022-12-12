@@ -30,12 +30,6 @@ const Match = (matched) => {
           <Panel header="This is panel header 1" key="1">
             <p>{ matched.name }</p>
           </Panel>
-          <Panel header="This is panel header 2" key="2">
-            <p>{text}</p>
-          </Panel>
-          <Panel header="This is panel header 3" key="3">
-            <p>{text}</p>
-          </Panel>
         </Collapse>
 
         <br /><br />

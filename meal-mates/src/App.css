@@ -7,7 +7,7 @@
   
   body {
     background: #DAF7DC;
-    /* overflow: hidden; */
+    overflow: hidden;
   }
   
   a {
@@ -127,6 +127,27 @@
   background-color: #ff9933;
   border: 2px solid #ff9933;
 }
+.message {
+  font-family: var(--font-family);
+  font-size: 80px;
+  font-weight: bold;
+  color: #252627;
+  /* transform: rotate(6deg); */
+  border-radius: 50%;
+}
+.message h1{
+  font-family: var(--font-family);
+  font-size: 40px;
+  font-weight: bold;
+  color: #252627;
+  /* transform: rotate(6deg); */
+  border-radius: 50%;
+}
+
+/* .match_image-container {
+  width: 650px; 
+  height: 400px; 
+} */
 @-webkit-keyframes scale-up-center {
   0% {
     -webkit-transform: scale(0.5);
