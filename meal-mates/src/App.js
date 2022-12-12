@@ -1,5 +1,6 @@
 import React from 'react'
 import ButtonGroup from "./ButtonGroup.js";
+import { calculateMatch } from './components/Match.jsx';
 import { Match, Header} from './containers';
 import { useRef } from 'react';
 import {useEffect, useState} from "react";
@@ -186,7 +187,13 @@ const App = () => {
       default:
         return resturants;
     }
-
+  }
+  const [matched, setMatched] = useState(null);
+  function getMatch() {
+    let match = calculateMatch(liked, disliked, superliked)
+    setMatched(match);
+    console.log(matched)
+    return 0;
   }
   
   return (
@@ -241,7 +248,21 @@ const App = () => {
         
       </div>
       <div ref={section5Ref}>
-          <Match />
+          <button onClick={() => setMatched(calculateMatch(liked,disliked,superliked))}>MATCH ME</button>
+          {matched? <>{
+            <div>
+              {matched.name}
+              <br></br>
+              {matched.location.display_address}
+              <br></br>
+              {matched.distance}
+            </div>
+          }
+          </> : (
+            <button onClick={() => {
+              setMatched(calculateMatch(liked,disliked,superliked))
+            }}>try again</button>
+          )}
       </div>
     </div>
   )

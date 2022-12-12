@@ -5,7 +5,7 @@ import Superlike from './actions/Superlike';
 import Watermelon from './actions/Watermelon';
 import './Card.css'
 
-const Actions = ({ person, changeActionChoice }) => {
+const Actions = ({ person, changeActionChoice, calcMatch }) => {
   return (
     <div className="btn">
         <Watermelon/>
