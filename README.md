@@ -1,4 +1,4 @@
-# Food-Tinder-EC327-Project
+# MEALME-EC327-Project
 
 Team Members:
 Jason Li, Celine Chen, Andrew Sasasmori, Jake Chen, Naomi Gonzalez
@@ -42,4 +42,5 @@ npm start
 
 **Project Description:**
 
-The MEALME website curates suggestions of restaurants based on location, price range, and preferences thorugh an algorithm. In order to curate a list of preferences, the user has the four options of: disliking, liking, SUPER-liking, or clicking the watermelon icon. After the user has gone thorugh the  This algorithm calculates and outputs the matched dinning locations based on previous user input. In order to calculate the matched location, 
+The MEALME website curates a matched restaurant based on the user's location, preference price range, and their choices when swiping through the different restaurant profiles. This website is intended to help an indecisive user to choose a restaurant that they should eat and save time on their end. After the user inputs their location and price range choice, they go through a series of profiles and select the four different icons that resembles dislike, like, super-like, and whether they are ready to be matched, where they click the watermelon icon. After going through all the profiles, the algorithm calculates and outputs their matched dining location based on their previous inputs. 
+
