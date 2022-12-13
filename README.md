@@ -11,7 +11,7 @@ Celine Chen: cchen@bu.edu
 
 Andrew Sasasmori: sasamori@bu.edu
 
-Jake Chen: jaketlee@bu.edu
+Jake Lee: jaketlee@bu.edu
 
 Naomi Gonzalez: ngonzalz@bu.edu
 
