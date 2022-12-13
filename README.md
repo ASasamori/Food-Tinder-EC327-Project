@@ -1,7 +1,7 @@
 # MEALME-EC327-Project
 
 Team Members:
-Jason Li, Celine Chen, Andrew Sasasmori, Jake Chen, Naomi Gonzalez
+Jason Li, Celine Chen, Andrew Sasasmori, Jake Lee, Naomi Gonzalez
 
 Team Emails:
 
