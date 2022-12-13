@@ -15,6 +15,8 @@ Jake Lee: jaketlee@bu.edu
 
 Naomi Gonzalez: ngonzalz@bu.edu
 
+Project Youtube Link: https://www.youtube.com/watch?v=PB7FkXCeDDc
+
 
 **How to build the project:**
 
